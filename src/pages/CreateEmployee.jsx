@@ -1,14 +1,152 @@
-import React from "react";
-import { Link } from "react-router-dom"; // Import Link
+// src/pages/CreateEmployee.jsx
+import React, { useState } from "react"; // 1. Importer useState
+import { Link } from "react-router-dom";
+// TODO: Importer le composant Modal pour l'afficher après soumission
+// TODO: Importer les composants DatePicker et Select (ou les librairies)
+// TODO: Importer useDispatch et l'action addEmployee
 
 function CreateEmployee() {
+    // 2. Initialiser les états pour chaque champ du formulaire
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState(""); // Sera géré par DatePicker plus tard
+    const [startDate, setStartDate] = useState(""); // Sera géré par DatePicker plus tard
+    const [street, setStreet] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState(""); // Garder la valeur (ex: 'AL')
+    const [zipCode, setZipCode] = useState("");
+    const [department, setDepartment] = useState("");
+
+    // TODO: Gérer l'état d'ouverture de la modale (useState)
+    // TODO: Utiliser useDispatch pour envoyer l'action Redux
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newEmployee = {
+            firstName,
+            lastName,
+            dateOfBirth,
+            startDate,
+            street,
+            city,
+            state,
+            zipCode,
+            department,
+        };
+        // TODO: Logique de validation
+        // TODO: Dispatch de l'action addEmployee(newEmployee)
+        // TODO: Afficher la modale de confirmation
+        console.log("Employee Data:", newEmployee); // 4. Afficher l'état collecté
+    };
+
     return (
         <div>
-            <h1>HRnet</h1>
-            <Link to="/employee-list">View Current Employees</Link>{" "}
-            {/* Lien vers l'autre page */}
-            <h2>Create Employee</h2>
-            {/* TODO: Ajouter le formulaire ici */}
+            {/* ... (Titre et lien inchangés) ... */}
+            <div className="container">
+                <Link to="/employee-list">View Current Employees</Link>
+                <h2>Create Employee</h2>
+                <form onSubmit={handleSubmit} id="create-employee">
+                    {/* 3. Connecter les états aux inputs/selects */}
+                    <label htmlFor="first-name">First Name</label>
+                    <input
+                        type="text"
+                        id="first-name"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                    />
+
+                    <label htmlFor="last-name">Last Name</label>
+                    <input
+                        type="text"
+                        id="last-name"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                    />
+
+                    <label htmlFor="date-of-birth">Date of Birth</label>
+                    {/* Pour l'instant, on lie l'input texte simple */}
+                    <input
+                        id="date-of-birth"
+                        type="text"
+                        placeholder="MM/DD/YYYY"
+                        value={dateOfBirth}
+                        onChange={(e) => setDateOfBirth(e.target.value)} // Changera avec DatePicker
+                    />
+
+                    <label htmlFor="start-date">Start Date</label>
+                    {/* Pour l'instant, on lie l'input texte simple */}
+                    <input
+                        id="start-date"
+                        type="text"
+                        placeholder="MM/DD/YYYY"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)} // Changera avec DatePicker
+                    />
+
+                    <fieldset className="address">
+                        <legend>Address</legend>
+
+                        <label htmlFor="street">Street</label>
+                        <input
+                            id="street"
+                            type="text"
+                            value={street}
+                            onChange={(e) => setStreet(e.target.value)}
+                        />
+
+                        <label htmlFor="city">City</label>
+                        <input
+                            id="city"
+                            type="text"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+
+                        <label htmlFor="state">State</label>
+                        {/* TODO: Remplacer par le composant Select/Dropdown */}
+                        <select
+                            name="state"
+                            id="state"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                        >
+                            <option value="">Select State</option>
+                            {/* TODO: Peupler avec la liste des états */}
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            {/* ... autres états ... */}
+                        </select>
+
+                        <label htmlFor="zip-code">Zip Code</label>
+                        <input
+                            id="zip-code"
+                            type="number" // On peut garder type="number" ou "text"
+                            value={zipCode}
+                            onChange={(e) => setZipCode(e.target.value)}
+                        />
+                    </fieldset>
+
+                    <label htmlFor="department">Department</label>
+                    {/* TODO: Remplacer par le composant Select/Dropdown */}
+                    <select
+                        name="department"
+                        id="department"
+                        value={department}
+                        onChange={(e) => setDepartment(e.target.value)}
+                    >
+                        <option value="">Select Department</option>
+                        {/* TODO: Peupler avec la liste des départements */}
+                        <option>Sales</option>
+                        <option>Marketing</option>
+                        <option>Engineering</option>
+                        <option>Human Resources</option>
+                        <option>Legal</option>
+                    </select>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+            {/* ... (Partie Modale inchangée pour l'instant) ... */}
         </div>
     );
 }
