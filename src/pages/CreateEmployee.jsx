@@ -1,6 +1,7 @@
-// src/pages/CreateEmployee.jsx
-import React, { useState } from "react"; // 1. Importer useState
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addEmployee } from "../store/employeesSlice";
 // TODO: Importer le composant Modal pour l'afficher après soumission
 // TODO: Importer les composants DatePicker et Select (ou les librairies)
 // TODO: Importer useDispatch et l'action addEmployee
@@ -18,11 +19,17 @@ function CreateEmployee() {
     const [department, setDepartment] = useState("");
 
     // TODO: Gérer l'état d'ouverture de la modale (useState)
-    // TODO: Utiliser useDispatch pour envoyer l'action Redux
+    const dispatch = useDispatch();
+
+    // TODO: Gérer l'état d'ouverture de la modale (useState)
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // 3. Créer l'objet employé à partir de l'état local
         const newEmployee = {
+            // On pourrait ajouter un ID unique ici, mais pour l'instant on met juste les données
+            // id: Date.now(), // Exemple simple d'ID, à améliorer potentiellement
             firstName,
             lastName,
             dateOfBirth,
@@ -33,15 +40,19 @@ function CreateEmployee() {
             zipCode,
             department,
         };
-        // TODO: Logique de validation
-        // TODO: Dispatch de l'action addEmployee(newEmployee)
+
+        // TODO: Logique de validation avant de dispatcher
+
+        // 3. Dispatcher l'action addEmployee avec le nouvel employé comme payload
+        dispatch(addEmployee(newEmployee));
+
+        console.log("Employee dispatched to Redux:", newEmployee);
         // TODO: Afficher la modale de confirmation
-        console.log("Employee Data:", newEmployee); // 4. Afficher l'état collecté
+        // TODO: Optionnel: Réinitialiser le formulaire après soumission
     };
 
     return (
         <div>
-            {/* ... (Titre et lien inchangés) ... */}
             <div className="container">
                 <Link to="/employee-list">View Current Employees</Link>
                 <h2>Create Employee</h2>
