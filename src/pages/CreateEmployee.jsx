@@ -12,8 +12,8 @@ function CreateEmployee() {
     // 2. Initialiser les états pour chaque champ du formulaire
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState("null");
-    const [startDate, setStartDate] = useState("null");
+    const [dateOfBirth, setDateOfBirth] = useState(null);
+    const [startDate, setStartDate] = useState(null);
     const [street, setStreet] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
@@ -95,8 +95,8 @@ function CreateEmployee() {
                         onChange={(date) => setStartDate(date)}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="DD/MM/YYYY"
-                        showYearDropdown
-                        scrollableYearDropdown
+                        // showYearDropdown
+                        // scrollableYearDropdown
                     />
 
                     <fieldset className="address">
