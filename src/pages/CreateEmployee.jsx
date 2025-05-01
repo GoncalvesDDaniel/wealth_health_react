@@ -32,13 +32,19 @@ function CreateEmployee() {
         e.preventDefault();
 
         // 3. Créer l'objet employé à partir de l'état local
+        const formattedDateOfBirth = dateOfBirth
+            ? dateOfBirth.toISOString().split("T")[0]
+            : null;
+        const formattedStartDate = startDate
+            ? startDate.toISOString().split("T")[0]
+            : null;
         const newEmployee = {
             // On pourrait ajouter un ID unique ici, mais pour l'instant on met juste les données
             // id: Date.now(), // Exemple simple d'ID, à améliorer potentiellement
             firstName,
             lastName,
-            dateOfBirth,
-            startDate,
+            formattedDateOfBirth,
+            formattedStartDate,
             street,
             city,
             state,
@@ -62,7 +68,6 @@ function CreateEmployee() {
                 <Link to="/employee-list">View Current Employees</Link>
                 <h2>Create Employee</h2>
                 <form onSubmit={handleSubmit} id="create-employee">
-                    {/* 3. Connecter les états aux inputs/selects */}
                     <label htmlFor="first-name">First Name</label>
                     <input
                         type="text"
