@@ -2,19 +2,21 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addEmployee } from "../store/employeesSlice";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 // TODO: Importer le composant Modal pour l'afficher après soumission
-// TODO: Importer les composants DatePicker et Select (ou les librairies)
 // TODO: Importer useDispatch et l'action addEmployee
 
 function CreateEmployee() {
     // 2. Initialiser les états pour chaque champ du formulaire
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState(""); // Sera géré par DatePicker plus tard
-    const [startDate, setStartDate] = useState(""); // Sera géré par DatePicker plus tard
+    const [dateOfBirth, setDateOfBirth] = useState("null");
+    const [startDate, setStartDate] = useState("null");
     const [street, setStreet] = useState("");
     const [city, setCity] = useState("");
-    const [state, setState] = useState(""); // Garder la valeur (ex: 'AL')
+    const [state, setState] = useState("");
     const [zipCode, setZipCode] = useState("");
     const [department, setDepartment] = useState("");
 
@@ -76,22 +78,25 @@ function CreateEmployee() {
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
                     {/* Pour l'instant, on lie l'input texte simple */}
-                    <input
+                    <DatePicker
                         id="date-of-birth"
-                        type="text"
-                        placeholder="MM/DD/YYYY"
-                        value={dateOfBirth}
-                        onChange={(e) => setDateOfBirth(e.target.value)} // Changera avec DatePicker
+                        selected={dateOfBirth}
+                        onChange={(date) => setDateOfBirth(date)}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="DD/MM/YYYY"
+                        showYearDropdown
+                        scrollableYearDropdown
                     />
 
                     <label htmlFor="start-date">Start Date</label>
-                    {/* Pour l'instant, on lie l'input texte simple */}
-                    <input
+                    <DatePicker
                         id="start-date"
-                        type="text"
-                        placeholder="MM/DD/YYYY"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)} // Changera avec DatePicker
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="DD/MM/YYYY"
+                        showYearDropdown
+                        scrollableYearDropdown
                     />
 
                     <fieldset className="address">
