@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addEmployee } from "../store/employeesSlice";
 import DatePicker from "react-datepicker";
-import Select from "react-select/base";
 import { states, departments } from "../utils/constants";
+import SimpleSelect from "../components/SimpleSelect";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -19,9 +19,9 @@ function CreateEmployee() {
     const [startDate, setStartDate] = useState(null);
     const [street, setStreet] = useState("");
     const [city, setCity] = useState("");
-    const [state, setState] = useState(null);
+    const [state, setState] = useState("");
     const [zipCode, setZipCode] = useState("");
-    const [department, setDepartment] = useState(null);
+    const [department, setDepartment] = useState("");
 
     // TODO: Gérer l'état d'ouverture de la modale (useState)
     const dispatch = useDispatch();
@@ -121,16 +121,12 @@ function CreateEmployee() {
                             onChange={(e) => setCity(e.target.value)}
                         />
 
-                        <label htmlFor="state">State</label>
-                        <Select
-                            inputId="state"
+                        <SimpleSelect
+                            label="State"
+                            id="state"
                             options={states}
                             value={state}
-                            onChange={(selectedOption) =>
-                                setState(selectedOption)
-                            }
-                            // onChange={setState}
-                            placeholder="Select State"
+                            onChange={(e) => setState(e.target.value)}
                         />
 
                         <label htmlFor="zip-code">Zip Code</label>
@@ -142,16 +138,16 @@ function CreateEmployee() {
                         />
                     </fieldset>
 
-                    <label htmlFor="department">Department</label>
-                    <Select
-                        inputId="department"
+                    <SimpleSelect
+                        label="Department"
+                        id="department"
                         options={departments}
                         value={department}
-                        onChange={setDepartment}
-                        placeholder="Select Department"
+                        onChange={(e) => setDepartment(e.target.value)}
                     />
-
-                    <button type="submit">Save</button>
+                    <div className="submit">
+                        <button type="submit">Save</button>
+                    </div>
                 </form>
             </div>
             {/* ... (Partie Modale inchangée pour l'instant) ... */}

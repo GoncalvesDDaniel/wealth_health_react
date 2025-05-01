@@ -1,0 +1,9 @@
+.simple-select {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.simple-select select {
+    padding: 4px;
+}
