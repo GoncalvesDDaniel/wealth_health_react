@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addEmployee } from "../store/employeesSlice";
 import DatePicker from "react-datepicker";
+import Select from "react-select/base";
+import { states, departments } from "../utils/constants";
+
 import "react-datepicker/dist/react-datepicker.css";
 
 // TODO: Importer le composant Modal pour l'afficher après soumission
@@ -16,9 +19,9 @@ function CreateEmployee() {
     const [startDate, setStartDate] = useState(null);
     const [street, setStreet] = useState("");
     const [city, setCity] = useState("");
-    const [state, setState] = useState("");
+    const [state, setState] = useState(null);
     const [zipCode, setZipCode] = useState("");
-    const [department, setDepartment] = useState("");
+    const [department, setDepartment] = useState(null);
 
     // TODO: Gérer l'état d'ouverture de la modale (useState)
     const dispatch = useDispatch();
@@ -119,19 +122,16 @@ function CreateEmployee() {
                         />
 
                         <label htmlFor="state">State</label>
-                        {/* TODO: Remplacer par le composant Select/Dropdown */}
-                        <select
-                            name="state"
-                            id="state"
+                        <Select
+                            inputId="state"
+                            options={states}
                             value={state}
-                            onChange={(e) => setState(e.target.value)}
-                        >
-                            <option value="">Select State</option>
-                            {/* TODO: Peupler avec la liste des états */}
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            {/* ... autres états ... */}
-                        </select>
+                            onChange={(selectedOption) =>
+                                setState(selectedOption)
+                            }
+                            // onChange={setState}
+                            placeholder="Select State"
+                        />
 
                         <label htmlFor="zip-code">Zip Code</label>
                         <input
@@ -143,21 +143,13 @@ function CreateEmployee() {
                     </fieldset>
 
                     <label htmlFor="department">Department</label>
-                    {/* TODO: Remplacer par le composant Select/Dropdown */}
-                    <select
-                        name="department"
-                        id="department"
+                    <Select
+                        inputId="department"
+                        options={departments}
                         value={department}
-                        onChange={(e) => setDepartment(e.target.value)}
-                    >
-                        <option value="">Select Department</option>
-                        {/* TODO: Peupler avec la liste des départements */}
-                        <option>Sales</option>
-                        <option>Marketing</option>
-                        <option>Engineering</option>
-                        <option>Human Resources</option>
-                        <option>Legal</option>
-                    </select>
+                        onChange={setDepartment}
+                        placeholder="Select Department"
+                    />
 
                     <button type="submit">Save</button>
                 </form>
