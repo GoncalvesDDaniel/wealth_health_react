@@ -56,9 +56,7 @@ function CreateEmployee() {
 
         // 3. Dispatcher l'action addEmployee avec le nouvel employé comme payload
         dispatch(addEmployee(newEmployee));
-
         console.log("Employee dispatched to Redux:", newEmployee);
-        // TODO: Afficher la modale de confirmation
         // TODO: Optionnel: Réinitialiser le formulaire après soumission
     };
 

@@ -15,7 +15,6 @@ function SimpleSelect({ label, id, options, value, onChange, placeholder }) {
             <label htmlFor={id}>{label}</label>
             <select id={id} value={value} onChange={onChange}>
                 <option value="">{placeholder || `Select ${label}`}</option>
-                {/* Mapper sur les options fournies */}
                 {options.map((option, index) => (
                     <option
                         key={`${option.value}-${index}`}
