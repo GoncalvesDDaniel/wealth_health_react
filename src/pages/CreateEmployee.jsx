@@ -39,8 +39,7 @@ function CreateEmployee() {
             ? startDate.toISOString().split("T")[0]
             : null;
         const newEmployee = {
-            // On pourrait ajouter un ID unique ici, mais pour l'instant on met juste les données
-            // id: Date.now(), // Exemple simple d'ID, à améliorer potentiellement
+            // id: Date.now() ? id for the redux store maybe
             firstName,
             lastName,
             formattedDateOfBirth,
@@ -51,13 +50,18 @@ function CreateEmployee() {
             zipCode,
             department,
         };
-
-        // TODO: Logique de validation avant de dispatcher
-
-        // 3. Dispatcher l'action addEmployee avec le nouvel employé comme payload
         dispatch(addEmployee(newEmployee));
-        console.log("Employee dispatched to Redux:", newEmployee);
-        // TODO: Optionnel: Réinitialiser le formulaire après soumission
+
+        // Reset des états locaux
+        setFirstName("");
+        setLastName("");
+        setDateOfBirth(null);
+        setStartDate(null);
+        setStreet("");
+        setCity("");
+        setState("");
+        setZipCode("");
+        setDepartment("");
     };
 
     return (

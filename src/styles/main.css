@@ -26,3 +26,16 @@ label {
     align-items: center;
     justify-content: center;
 }
+.search-container {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.search-container label {
+    margin: 0 5px 0 0;
+}
+
+.search-container input {
+    padding: 5px;
+}

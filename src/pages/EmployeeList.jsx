@@ -1,12 +1,24 @@
 // src/pages/EmployeeList.jsx
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DataTable from "react-data-table-component";
 
 function EmployeeList() {
+    // const data = useMemo(() => employeesData, [employeesData]);
     const employeesData = useSelector((state) => state.employees.list);
-    const data = useMemo(() => employeesData, [employeesData]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const filteredData = useMemo(() => {
+        if (!searchTerm) {
+            return employeesData;
+        }
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+        return employeesData.filter((employee) =>
+            Object.values(employee).some((value) =>
+                String(value).toLowerCase().includes(lowerCaseSearchTerm)
+            )
+        );
+    }, [employeesData, searchTerm]);
 
     const columns = useMemo(
         () => [
@@ -71,29 +83,36 @@ function EmployeeList() {
         []
     );
 
-    // TODO: Ajouter les états et la logique pour le filtre externe plus tard
     const customStyles = {
         headCells: {
             style: {
                 fontWeight: "bold",
-                color: "#000",
             },
         },
     };
+
     return (
         <div id="employee-div" className="container">
             <h1>Current Employees</h1>
-
-            {/* TODO: Ajouter le champ de recherche externe plus tard */}
+            <div className="search-container">
+                <label htmlFor="search">Search:</label>
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+            </div>
 
             <DataTable
                 columns={columns}
-                data={data}
-                noDataComponent={<div>No employees created yet.</div>}
+                data={filteredData}
+                noDataComponent={<div>No Data.</div>}
                 customStyles={customStyles}
                 pagination
-                fixedHeader
-                fixedHeaderScrollHeight="400px"
+                // fixedHeader
+                // fixedHeaderScrollHeight="70dvh"
                 highlightOnHover
             />
 
