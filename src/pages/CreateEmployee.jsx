@@ -1,15 +1,13 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addEmployee } from "../store/employeesSlice";
-import DatePicker from "react-datepicker";
-import { states, departments } from "../utils/constants";
 import SimpleSelect from "../components/SimpleSelect";
+import { addEmployee } from "../store/employeesSlice";
+import { departments, states } from "../utils/constants";
+import Modal from "../components/Modal/Modal";
 
 import "react-datepicker/dist/react-datepicker.css";
-
-// TODO: Importer le composant Modal pour l'afficher après soumission
-// TODO: Importer useDispatch et l'action addEmployee
 
 function CreateEmployee() {
     // 2. Initialiser les états pour chaque champ du formulaire
@@ -23,10 +21,9 @@ function CreateEmployee() {
     const [zipCode, setZipCode] = useState("");
     const [department, setDepartment] = useState("");
 
-    // TODO: Gérer l'état d'ouverture de la modale (useState)
-    const dispatch = useDispatch();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // TODO: Gérer l'état d'ouverture de la modale (useState)
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -62,6 +59,8 @@ function CreateEmployee() {
         setState("");
         setZipCode("");
         setDepartment("");
+
+        setIsModalOpen(true); // Ouvrir la modale après soumission
     };
 
     return (
@@ -139,7 +138,7 @@ function CreateEmployee() {
                         <label htmlFor="zip-code">Zip Code</label>
                         <input
                             id="zip-code"
-                            type="number" // On peut garder type="number" ou "text"
+                            type="number"
                             value={zipCode}
                             onChange={(e) => setZipCode(e.target.value)}
                         />
@@ -157,7 +156,11 @@ function CreateEmployee() {
                     </div>
                 </form>
             </div>
-            {/* ... (Partie Modale inchangée pour l'instant) ... */}
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                {/* Contenu de la modale */}
+                <p>Employee Created!</p>
+                {/* <button onClick={() => setIsModalOpen(false)}>OK</button> */}
+            </Modal>
         </div>
     );
 }
