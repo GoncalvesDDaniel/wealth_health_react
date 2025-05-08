@@ -1,5 +1,24 @@
 {
     "name": "react-simplest-modal",
     "version": "1.0.0",
-    "author": "Daniel D. GONCALVES https://github.com/GoncalvesDDaniel"
+    "description": "A very simple, reusable modal component for React.",
+    "author": "Daniel D. GONCALVES (https://github.com/GoncalvesDDaniel)",
+    "license": "MIT",
+    "main": "Modal.jsx",
+    "module": "Modal.jsx",
+    "keywords": [
+        "react",
+        "modal",
+        "dialog",
+        "simple"
+    ],
+    "files": [
+        "Modal.jsx",
+        "Modal.css",
+        "README.md"
+    ],
+    "peerDependencies": {
+        "react": ">=16.8.0",
+        "react-dom": ">=16.8.0"
+    }
 }

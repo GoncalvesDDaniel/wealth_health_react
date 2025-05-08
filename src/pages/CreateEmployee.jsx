@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import SimpleSelect from "../components/SimpleSelect";
 import { addEmployee } from "../store/employeesSlice";
 import { departments, states } from "../utils/constants";
-import Modal from "../components/Modal/Modal";
+// import Modal from "../components/Modal/Modal";
+import Modal from "react-simplest-modal";
 
 import "react-datepicker/dist/react-datepicker.css";
 
