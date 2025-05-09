@@ -1,12 +1,62 @@
-# React + Vite
+# HRNet - React Migration (OpenClassrooms P14)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+This project involved migrating the legacy jQuery-based of "HRNet" to a modern React application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+For reference only, the original jQuery application can be found [here](https://github.com/OpenClassrooms-Student-Center/P12_Front-end).
 
-## Expanding the ESLint configuration
+## Goals
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Improve performance and maintainability by rebuilding it with React.
+2. Replacing jQuery plugins with modern packages.
+
+## Key Actions
+
+-   Complete rewrite with React.
+-   State management (Redux Toolkit).
+-   Routing (React Router DOM).
+-   jQuery plugins replaced with React solutions:
+    -   Date Picker: `react-datepicker`
+    -   Dropdowns: Custom React component.
+    -   Data Table: `react-data-table-component`
+    -   Modal: Custom `Modal` component (see published package below).
+-   Created and published a reusable Modal component to npm.
+
+## Published Component
+
+The custom Modal component created for this project has been published to npm:
+
+-   **Package:** [`react-simplest-modal`](https://www.npmjs.com/package/react-simplest-modal)
+
+## Getting Started (Development)
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/GoncalvesDDaniel/wealth_health_react.git
+    cd wealth_health_react
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+    By default, the application will be available at `http://localhost:5173`
+
+## Tech Stack Summary
+
+-   React
+-   Vite
+-   Redux Toolkit
+-   React Router DOM
+-   react-datepicker
+-   react-data-table-component
+-   react-simplest-modal (Proprietary Custom Package)
+-   CSS (Based on original styles)
+
+---
+
+_(Note: Performance analysis not included in this README.)_
