@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 import DataTable from "react-data-table-component";
 
 function EmployeeList() {
-    // const data = useMemo(() => employeesData, [employeesData]);
-    const employeesData = useSelector((state) => state.employees.list);
     const [searchTerm, setSearchTerm] = useState("");
+    const employeesData = useSelector((state) => state.employees.list);
+
     const filteredData = useMemo(() => {
         if (!searchTerm) {
             return employeesData;
@@ -111,8 +111,6 @@ function EmployeeList() {
                 noDataComponent={<div>No Data.</div>}
                 customStyles={customStyles}
                 pagination
-                // fixedHeader
-                // fixedHeaderScrollHeight="70dvh"
                 highlightOnHover
             />
 
