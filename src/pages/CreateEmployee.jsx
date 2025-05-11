@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import Modal from "react-simplest-modal";
 import SimpleSelect from "../components/SimpleSelect";
+import { useDispatch } from "react-redux";
 import { addEmployee } from "../store/employeesSlice";
 import { departments, states } from "../utils/constants";
-// import Modal from "../components/Modal/Modal";
-import Modal from "react-simplest-modal";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 function CreateEmployee() {
-    // 2. Initialiser les états pour chaque champ du formulaire
+    const dispatch = useDispatch();
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [dateOfBirth, setDateOfBirth] = useState(null);
@@ -24,12 +23,8 @@ function CreateEmployee() {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const dispatch = useDispatch();
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // 3. Créer l'objet employé à partir de l'état local
         const formattedDateOfBirth = dateOfBirth
             ? dateOfBirth.toISOString().split("T")[0]
             : null;
@@ -37,7 +32,6 @@ function CreateEmployee() {
             ? startDate.toISOString().split("T")[0]
             : null;
         const newEmployee = {
-            // id: Date.now() ? id for the redux store maybe
             firstName,
             lastName,
             formattedDateOfBirth,
@@ -50,7 +44,7 @@ function CreateEmployee() {
         };
         dispatch(addEmployee(newEmployee));
 
-        // Reset des états locaux
+        // Reset state after submit
         setFirstName("");
         setLastName("");
         setDateOfBirth(null);
@@ -61,12 +55,13 @@ function CreateEmployee() {
         setZipCode("");
         setDepartment("");
 
-        setIsModalOpen(true); // Ouvrir la modale après soumission
+        setIsModalOpen(true);
     };
 
     return (
         <div>
             <div className="container">
+                <h1>HRnet</h1>
                 <Link to="/employee-list">View Current Employees</Link>
                 <h2>Create Employee</h2>
                 <form onSubmit={handleSubmit} id="create-employee">
@@ -87,7 +82,6 @@ function CreateEmployee() {
                     />
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    {/* Pour l'instant, on lie l'input texte simple */}
                     <DatePicker
                         id="date-of-birth"
                         selected={dateOfBirth}
@@ -105,13 +99,10 @@ function CreateEmployee() {
                         onChange={(date) => setStartDate(date)}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="DD/MM/YYYY"
-                        // showYearDropdown
-                        // scrollableYearDropdown
                     />
 
                     <fieldset className="address">
                         <legend>Address</legend>
-
                         <label htmlFor="street">Street</label>
                         <input
                             id="street"
@@ -158,9 +149,7 @@ function CreateEmployee() {
                 </form>
             </div>
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                {/* Contenu de la modale */}
                 <p>Employee Created!</p>
-                {/* <button onClick={() => setIsModalOpen(false)}>OK</button> */}
             </Modal>
         </div>
     );

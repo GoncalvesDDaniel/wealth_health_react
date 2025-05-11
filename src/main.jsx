@@ -1,10 +1,9 @@
-// src/main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom"; // Import BrowserRouter
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store/index.js";
 import App from "./App.jsx";
-import { store } from "./store/index.js"; // Importer le store Redux
-import { Provider } from "react-redux"; // Importer le Provider
 import "./styles/main.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
