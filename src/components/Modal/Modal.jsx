@@ -1,9 +1,7 @@
 import React from "react";
-// Assuming Modal.css is in the SAME directory as Modal.jsx when packaged
 import "./modal.css";
 
-/**
- * Simple and reusable Modal component.
+/**Simple and reusable Modal component.
  * Displays content in a centered box with an overlay.
  * @param {object} props - The component's properties.
  * @param {boolean} props.isOpen - Determines if the modal is open or closed.
