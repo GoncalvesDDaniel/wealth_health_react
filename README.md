@@ -40,11 +40,18 @@ The custom Modal component created for this project has been published to npm:
     ```bash
     npm install
     ```
-3.  **Run the development server:**
+3.  **Build the application:**
+
     ```bash
-    npm run dev
+    npm run build
     ```
-    By default, the application will be available at `http://localhost:5173`
+
+    This will create `dist/` directory.
+
+4.  **Preview the production build locally:**
+    ```bash
+    npm run preview
+    ```
 
 ## Tech Stack Summary
 
@@ -52,10 +59,13 @@ The custom Modal component created for this project has been published to npm:
 -   Vite
 -   Redux Toolkit
 -   React Router DOM
+-   CSS (Based on original styles)
+
+## Packages Used
+
 -   react-datepicker
 -   react-data-table-component
 -   react-simplest-modal (Proprietary Custom Package)
--   CSS (Based on original styles)
 
 ---
 
