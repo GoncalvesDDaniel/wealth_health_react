@@ -1,13 +1,14 @@
 import React from "react";
 import "../styles/SimpleSelect.css";
 
-/** Un composant simple pour afficher un dropdown natif <select>.
- * @param {object} props - Les propriétés du composant.
- * @param {string} props.label - Le texte du label associé au select.
- * @param {string} props.id - L'id utilisé pour le select et le htmlFor du label.
- * @param {Array<object>} props.options - Tableau d'objets { value: string, label: string } pour les options.
- * @param {string} props.value - La valeur actuellement sélectionnée (doit correspondre à une 'value' d'option).
- * @param {function} props.onChange - La fonction à appeler quand la valeur change (reçoit l'événement).
+/**A simple component to display a native <select> dropdown.
+ * @param {object} props - The component's properties.
+ * @param {string} props.label - The text inside the label.
+ * @param {string} props.id - The id used for the select.
+ * @param {Array<object>} props.options - Selectable options { value: string, label: string }.
+ * @param {string} props.value - The currently selected value (must match an option's 'value').
+ * @param {function} props.onChange - The function when the value changes (like local state).
+ * @param {string} [props.placeholder] - Optional placeholder instade of props.label
  */
 function SimpleSelect({ label, id, options, value, onChange, placeholder }) {
     return (

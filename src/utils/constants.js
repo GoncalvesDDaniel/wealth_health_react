@@ -1,4 +1,3 @@
-// Liste des États
 export const states = [
     { value: "AL", label: "Alabama" },
     { value: "AK", label: "Alaska" },
@@ -52,7 +51,6 @@ export const states = [
     { value: "WY", label: "Wyoming" },
 ];
 
-// Liste des Départements
 export const departments = [
     { value: "Sales", label: "Sales" },
     { value: "Marketing", label: "Marketing" },
