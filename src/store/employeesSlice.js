@@ -5,6 +5,7 @@ const initialState = {
 };
 
 export const employeesSlice = createSlice({
+    name: "employees",
     initialState,
     reducers: {
         addEmployee: (state, action) => {

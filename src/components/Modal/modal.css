@@ -37,7 +37,8 @@
 }
 
 .modal-close-button:hover {
-    color: #000;
+    color: #fff;
+    background-color: #555;
 }
 
 .modal-body {
