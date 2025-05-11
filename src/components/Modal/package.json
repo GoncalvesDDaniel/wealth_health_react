@@ -1,6 +1,6 @@
 {
     "name": "react-simplest-modal",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A very simple, reusable modal component for React.",
     "author": "Daniel D. GONCALVES (https://github.com/GoncalvesDDaniel)",
     "license": "MIT",
