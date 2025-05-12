@@ -34,8 +34,8 @@ function CreateEmployee() {
         const newEmployee = {
             firstName,
             lastName,
-            formattedDateOfBirth,
-            formattedStartDate,
+            dateOfBirth: formattedDateOfBirth,
+            startDate: formattedStartDate,
             street,
             city,
             state,
